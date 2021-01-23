@@ -17,7 +17,7 @@ class ReviewInput extends Component {
     // console.log(this.props)
     // console.log({restaurantId: this.props.restaurantId, text: this.state.text})
     this.props.addReview({restaurantId: this.props.restaurantId, text: this.state.text});
-    debugger;
+//    debugger;
     this.setState({
       text: '',
     });
