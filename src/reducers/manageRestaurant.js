@@ -1,5 +1,4 @@
 import cuid from 'cuid';
-export const cuidFn = cuid;
 
 export default function manageRestaurants(state = {
   restaurants: [],
@@ -16,14 +15,14 @@ export default function manageRestaurants(state = {
       return { restaurants };      
 
     case 'ADD_REVIEW':
-      const review = { id: cuidFn(), restaurantId: action.review.restaurantId, text: action.review.text }
+      const review = { id: cuid(), restaurantId: action.review.restaurantId, text: action.review.text }
       console.log("review",review)
       return { ...state, reviews: [...state.reviews, review] }
 
     case 'DELETE_REVIEW':
-      //const reviews = state.reviews.filter(review => review.id !== action.id);
-      const reviews = state.reviews
-      return { reviews };      
+      const reviews = state.reviews.filter(review => review.id !== action.id);
+      // const reviews = state.reviews
+      return {...state, reviews }  
 
     default:
       return state;
